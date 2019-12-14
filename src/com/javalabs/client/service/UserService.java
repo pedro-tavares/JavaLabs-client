@@ -1,4 +1,4 @@
-package com.javalabs.client;
+package com.javalabs.client.service;
 
 import java.util.List;
 
