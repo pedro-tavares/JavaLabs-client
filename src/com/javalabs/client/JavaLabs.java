@@ -8,14 +8,19 @@ import org.fusesource.restygwt.client.dispatcher.DefaultFilterawareDispatcher;
 import org.fusesource.restygwt.client.dispatcher.DispatcherFilter;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.event.logical.shared.ResizeEvent;
+import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.http.client.RequestBuilder;
+import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.googlecode.gwt.crypto.bouncycastle.util.encoders.Base64;
-import com.javalabs.client.ui.TestbedPanel;
 
 public class JavaLabs implements EntryPoint {
+	
+	private Image javaImg = new Image("images/Java_1.png");
 	
 	@Override
 	public void onModuleLoad() {
@@ -59,8 +64,32 @@ public class JavaLabs implements EntryPoint {
 		topPanel.add(logoImg);
 		RootPanel.get().add(topPanel, 0, 0);
 		
+		javaImg.setPixelSize(100, 100);
+		resize();
+		
+		Window.addResizeHandler(new ResizeHandler() {
+			
+			  Timer resizeTimer = new Timer() {  
+			    @Override
+			    public void run() {
+			      resize();
+			    }
+			  };
+
+			  @Override
+			  public void onResize(ResizeEvent event) {
+			    resizeTimer.cancel();
+			    resizeTimer.schedule(10);
+			  }
+			});
+		
+		/*
 		TestbedPanel testbedPanel = new TestbedPanel();
 		RootPanel.get().add(testbedPanel, 100, 100);
-		
+		*/
+	}
+	
+	private void resize() {
+		RootPanel.get().add(javaImg, Window.getClientWidth() - 100, Window.getClientHeight() - 120);
 	}
 }
