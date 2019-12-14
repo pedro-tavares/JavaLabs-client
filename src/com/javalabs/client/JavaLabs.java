@@ -8,19 +8,15 @@ import org.fusesource.restygwt.client.dispatcher.DefaultFilterawareDispatcher;
 import org.fusesource.restygwt.client.dispatcher.DispatcherFilter;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.googlecode.gwt.crypto.bouncycastle.util.encoders.Base64;
-import com.javalabs.client.service.UserService;
 import com.javalabs.client.ui.TestbedPanel;
 
 public class JavaLabs implements EntryPoint {
 	
-	public static final UserService SERVICE = GWT.create(UserService.class);
-
 	@Override
 	public void onModuleLoad() {
 		addAuthHeaders();

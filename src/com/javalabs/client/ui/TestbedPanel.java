@@ -12,10 +12,10 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.javalabs.client.JavaLabs;
 import com.javalabs.dto.User;
 
 import com.javalabs.IKonstants;
+import com.javalabs.client.service.ServiceFactory;
 
 public class TestbedPanel extends VerticalPanel {
 	
@@ -95,7 +95,7 @@ public class TestbedPanel extends VerticalPanel {
 	}
 
 	private void callLoadService() {
-		JavaLabs.SERVICE.getAllUsers(new MethodCallback<List<User>>() {
+		ServiceFactory.USER_SERVICE.getAllUsers(new MethodCallback<List<User>>() {
 
 			@Override
 			public void onSuccess(Method method, List<User> response) {
@@ -116,7 +116,7 @@ public class TestbedPanel extends VerticalPanel {
 	
 	private void callSaveService() {
 		String usernmae = nameField.getText();
-		JavaLabs.SERVICE.saveUser(usernmae, new MethodCallback<User>() {
+		ServiceFactory.USER_SERVICE.saveUser(usernmae, new MethodCallback<User>() {
 
 			@Override
 			public void onSuccess(Method method, User response) {
