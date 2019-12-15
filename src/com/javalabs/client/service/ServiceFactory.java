@@ -4,6 +4,6 @@ import com.google.gwt.core.client.GWT;
 
 public class ServiceFactory {
 
-	public static final UserService USER_SERVICE = GWT.create(UserService.class);
+	public static final IUserService USER_SERVICE = GWT.create(IUserService.class);
 
 }

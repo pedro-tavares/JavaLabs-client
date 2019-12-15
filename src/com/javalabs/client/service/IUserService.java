@@ -14,7 +14,7 @@ import com.javalabs.constants.IConstants;
 import com.javalabs.dto.User;
 
 @Path(IConstants.SERVER + IConstants.PATH_USERS)
-public interface UserService extends RestService {
+public interface IUserService extends RestService {
 	
 	@POST
 	@Path(IConstants.PATH_ADD_USER)
