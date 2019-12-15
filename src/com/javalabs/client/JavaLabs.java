@@ -13,14 +13,18 @@ import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.googlecode.gwt.crypto.bouncycastle.util.encoders.Base64;
 
 public class JavaLabs implements EntryPoint {
 	
 	private Image javaImg = new Image("images/Java_1.png");
+	private HorizontalPanel bottomPanel = new HorizontalPanel();
 	
 	@Override
 	public void onModuleLoad() {
@@ -64,6 +68,12 @@ public class JavaLabs implements EntryPoint {
 		topPanel.add(logoImg);
 		RootPanel.get().add(topPanel, 0, 0);
 		
+		bottomPanel.setStyleName("bottomPanel");
+		bottomPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+		bottomPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
+		bottomPanel.add(new Label("JavaLabs is a product by CloudLabs. Hosted in Dublin and Amsterdam"));
+		RootPanel.get().add(bottomPanel, 0, Window.getClientHeight() - 25);
+		
 		javaImg.setPixelSize(100, 100);
 		resize();
 		
@@ -90,6 +100,7 @@ public class JavaLabs implements EntryPoint {
 	}
 	
 	private void resize() {
-		RootPanel.get().add(javaImg, Window.getClientWidth() - 100, Window.getClientHeight() - 120);
+		RootPanel.get().add(javaImg, Window.getClientWidth() - 100, Window.getClientHeight() - 125);
+		RootPanel.get().add(bottomPanel, 0, Window.getClientHeight() - 25);
 	}
 }
