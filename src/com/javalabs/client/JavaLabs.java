@@ -118,7 +118,7 @@ public class JavaLabs implements EntryPoint {
 	
 	private void createCenterPanel() {
 		CenterPanel centerPanel = new CenterPanel();
-		RootPanel.get().add(centerPanel, 0, 200);
+		RootPanel.get().add(centerPanel, 0, 150);
 		
 		TestbedPanel testbedPanel = new TestbedPanel();
 		centerPanel.add(testbedPanel);

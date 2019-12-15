@@ -6,7 +6,7 @@ body {
  	background-attachment: fixed;
  	background-size:  cover;
 	*/
-	 font: "Arial",sans-serif;
+	font: "Arial",sans-serif;
 }
 
 h1 {
@@ -35,8 +35,9 @@ button.gwt-Button[disabled] {
   margin: 5px;
 }
 
-.serverResponseLabelError {
-  color: red;
+.errorLbl {
+	font-weight: bold;
+ 	color: red;
 }
 
 #closeButton {
