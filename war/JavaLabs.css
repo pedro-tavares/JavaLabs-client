@@ -6,6 +6,7 @@ body {
  	background-attachment: fixed;
  	background-size:  cover;
 	*/
+	 font: "Arial",sans-serif;
 }
 
 h1 {
@@ -58,6 +59,10 @@ h1 {
 	font-weight: bold;
 	opacity: 0.75;
   	filter: alpha(opacity=75); /* For IE8 and earlier */
+}
+
+.centerPanels {
+	width: 100%;
 }
 
 .bottomPanel {

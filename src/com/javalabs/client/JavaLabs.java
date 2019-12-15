@@ -22,6 +22,8 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.googlecode.gwt.crypto.bouncycastle.util.encoders.Base64;
+import com.javalabs.client.ui.CenterPanel;
+import com.javalabs.client.ui.TestbedPanel;
 
 public class JavaLabs implements EntryPoint {
 	
@@ -111,10 +113,16 @@ public class JavaLabs implements EntryPoint {
 			  }
 			});
 		
-		/*
+		createCenterPanel();
+	}
+	
+	private void createCenterPanel() {
+		CenterPanel centerPanel = new CenterPanel();
+		RootPanel.get().add(centerPanel, 0, 200);
+		
 		TestbedPanel testbedPanel = new TestbedPanel();
-		RootPanel.get().add(testbedPanel, 100, 100);
-		*/
+		centerPanel.add(testbedPanel);
+		
 	}
 	
 	private void resize() {
