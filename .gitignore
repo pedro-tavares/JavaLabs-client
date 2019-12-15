@@ -3,6 +3,7 @@
 /war/WEB-INF/classes
 /war/WEB-INF/deploy
 !.mvn/wrapper/maven-wrapper.jar
+*.cache.js
 
 ### STS ###
 .apt_generated
