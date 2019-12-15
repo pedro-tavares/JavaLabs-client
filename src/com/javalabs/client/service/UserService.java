@@ -10,16 +10,17 @@ import javax.ws.rs.Path;
 import org.fusesource.restygwt.client.MethodCallback;
 import org.fusesource.restygwt.client.RestService;
 
+import com.javalabs.constants.IConstants;
 import com.javalabs.dto.User;
 
-@Path("http://localhost:8088/users")
+@Path(IConstants.SERVER + IConstants.PATH_USERS)
 public interface UserService extends RestService {
 	
 	@POST
-	@Path("/addUser")
+	@Path(IConstants.PATH_ADD_USER)
 	public void saveUser(@BeanParam User user, MethodCallback<User> callback);
 
 	@GET
-	@Path("/fetchAllUsers")
+	@Path(IConstants.PATH_GET_ALL_USERS)
 	public void getAllUsers(MethodCallback<List<User>> callback);
 }

@@ -15,7 +15,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.javalabs.IConstants;
+import com.javalabs.IUIConstants;
 import com.javalabs.client.service.ServiceFactory;
 import com.javalabs.dto.User;
 
@@ -137,7 +137,7 @@ public class TestbedPanel extends VerticalPanel {
 			@Override
 			public void onFailure(Method method, Throwable exception) {
 				serverResponseLabel.addStyleName("serverResponseLabelError");
-				showDialogBox("REST endpoint call - Failure", IConstants.SERVER_ERROR);
+				showDialogBox("REST endpoint call - Failure", IUIConstants.SERVER_ERROR);
 			}
 		});
 	}
@@ -151,7 +151,7 @@ public class TestbedPanel extends VerticalPanel {
 				String names = response.stream()
 					.map(e -> "<li>" + 
 						"User name:" + e.getName() +
-						"User email:" + e.getEmail() +
+						", User email:" + e.getEmail() +
 						", ID: " + e.getId() + 
 						"</li>")
 					.collect(Collectors.joining(""));
@@ -161,7 +161,7 @@ public class TestbedPanel extends VerticalPanel {
 			@Override
 			public void onFailure(Method method, Throwable exception) {
 				serverResponseLabel.addStyleName("serverResponseLabelError");
-				showDialogBox("REST endpoint call - Failure", IConstants.SERVER_ERROR);
+				showDialogBox("REST endpoint call - Failure", IUIConstants.SERVER_ERROR);
 			}
 		});
 	}
