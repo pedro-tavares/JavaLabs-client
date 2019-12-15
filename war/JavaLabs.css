@@ -28,6 +28,9 @@ button.gwt-Button {
 	color: white;
 	background: #5DBCD2;
 }
+button.gwt-Button[disabled] {
+	background: lightgrey;
+}
 
 .gwt-DialogBox {
   width: 400px;
