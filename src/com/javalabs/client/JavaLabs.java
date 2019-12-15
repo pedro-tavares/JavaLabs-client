@@ -20,6 +20,7 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import com.googlecode.gwt.crypto.bouncycastle.util.encoders.Base64;
 
 public class JavaLabs implements EntryPoint {
@@ -68,6 +69,18 @@ public class JavaLabs implements EntryPoint {
 		logoImg.setSize("200", "40");
 		topPanel.add(logoImg);
 		RootPanel.get().add(topPanel, 0, 0);
+		
+		VerticalPanel presentationPanel = new VerticalPanel();
+		presentationPanel.setStyleName("presentationPanel");
+		presentationPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+		presentationPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);	
+		Label presentation1Lbl = new Label("The Best Java Skills Assessment Platform");
+		presentation1Lbl.setStyleName("presentation1Lbl");
+		presentationPanel.add(presentation1Lbl);
+		Label presentation2Lbl = new Label("1000+ carefully curated questions");
+		presentation2Lbl.setStyleName("presentation2Lbl");
+		presentationPanel.add(presentation2Lbl);
+		RootPanel.get().add(presentationPanel, 0, 66);
 		
 		bottomPanel.setStyleName("bottomPanel");
 		bottomPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);

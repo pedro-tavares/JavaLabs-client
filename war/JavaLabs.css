@@ -50,6 +50,16 @@ h1 {
 	background-color: white;
 }
 
+.presentationPanel {
+	width: 100%;
+	height: 80px;
+	color: white;
+	background-color: darkgrey;
+	font-weight: bold;
+	opacity: 0.75;
+  	filter: alpha(opacity=75); /* For IE8 and earlier */
+}
+
 .bottomPanel {
 	width: 100%;
 	height: 25px;
@@ -72,4 +82,16 @@ h1 {
 	opacity: 0.25;
   	filter: alpha(opacity=25); /* For IE8 and earlier */
   	z-index: 0;
+}
+
+.presentation1Lbl {
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.presentation2Lbl {
+	color: white;
+	font-size: 15px;
+	font-weight: bold;
 }
