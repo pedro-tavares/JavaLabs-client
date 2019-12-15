@@ -22,7 +22,7 @@ public class TestbedPanel extends VerticalPanel {
 	
 	private Button saveButton, dialogCloseButton, searchButton, loadAllButton;
 	private TextBox nameField, searchField;
-	private Label textToServerLabel;
+	private Label nameLbl, searchNameLbl, textToServerLabel;
 	private HTML serverResponseLabel;
 	private DialogBox dialogBox;
 
@@ -32,9 +32,11 @@ public class TestbedPanel extends VerticalPanel {
 		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		this.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 		
+		nameLbl = new Label("Enter Name:");
 		nameField = new TextBox();
 		saveButton = new Button("Save");
 
+		searchNameLbl = new Label("Enter Search Name:");
 		searchField = new TextBox();
 		searchButton = new Button("Search");
 
@@ -53,8 +55,10 @@ public class TestbedPanel extends VerticalPanel {
 		loadAllButton.addClickHandler(event -> callLoadService());
 		
 		this.setSize("100", "100");
+		this.add(nameLbl);
 		this.add(nameField);
 		this.add(saveButton);
+		this.add(searchNameLbl);
 		this.add(searchField);
 		this.add(searchButton);
 		this.add(loadAllButton);
