@@ -12,17 +12,19 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.javalabs.IKs;
+import com.javalabs.IConstants;
 import com.javalabs.client.service.ServiceFactory;
 import com.javalabs.dto.User;
 
 public class TestbedPanel extends VerticalPanel {
 	
 	private Button saveButton, dialogCloseButton, searchButton, loadAllButton;
-	private TextBox nameField, searchField;
-	private Label nameLbl, searchNameLbl, textToServerLabel;
+	private Label nameLbl, emailLbl, passwordLbl, reenterPasswordLbl, searchNameLbl, textToServerLabel;
+	private TextBox nameField, emailField, searchField;
+	private PasswordTextBox passwordField, reenterPasswordField;
 	private HTML serverResponseLabel;
 	private DialogBox dialogBox;
 
@@ -34,9 +36,18 @@ public class TestbedPanel extends VerticalPanel {
 		
 		nameLbl = new Label("Enter Name:");
 		nameField = new TextBox();
+
+		emailLbl = new Label("Enter Email:");
+		emailField = new TextBox();
+
+		passwordLbl = new Label("Enter Password:");
+		passwordField = new PasswordTextBox();
+
+		reenterPasswordLbl = new Label("Renter Password:");
+		reenterPasswordField = new PasswordTextBox();
 		saveButton = new Button("Save");
 
-		searchNameLbl = new Label("Enter Search Name:");
+		searchNameLbl = new Label("Enter Search Email:");
 		searchField = new TextBox();
 		searchButton = new Button("Search");
 
@@ -54,9 +65,15 @@ public class TestbedPanel extends VerticalPanel {
 
 		loadAllButton.addClickHandler(event -> callLoadService());
 		
-		this.setSize("100", "100");
+		//this.setSize("100", "100");
 		this.add(nameLbl);
 		this.add(nameField);
+		this.add(emailLbl);
+		this.add(emailField);
+		this.add(passwordLbl);
+		this.add(passwordField);
+		this.add(reenterPasswordLbl);
+		this.add(reenterPasswordField);		
 		this.add(saveButton);
 		this.add(searchNameLbl);
 		this.add(searchField);
@@ -101,6 +118,30 @@ public class TestbedPanel extends VerticalPanel {
 		dialogCloseButton.setFocus(true);
 	}
 
+	private void callSaveService() {
+		User user = new User();
+		user.setName(nameField.getText());
+		user.setEmail(emailField.getText());
+		
+		ServiceFactory.USER_SERVICE.saveUser(user, new MethodCallback<User>() {
+
+			@Override
+			public void onSuccess(Method method, User response) {
+				serverResponseLabel.removeStyleName("serverResponseLabelError");
+				showDialogBox("REST endpoint call", 
+					"User name: " + response.getName() + 
+					"User email: " + response.getEmail() + 
+					" ID: " + response.getId());
+			}
+
+			@Override
+			public void onFailure(Method method, Throwable exception) {
+				serverResponseLabel.addStyleName("serverResponseLabelError");
+				showDialogBox("REST endpoint call - Failure", IConstants.SERVER_ERROR);
+			}
+		});
+	}
+	
 	private void callLoadService() {
 		ServiceFactory.USER_SERVICE.getAllUsers(new MethodCallback<List<User>>() {
 
@@ -108,33 +149,19 @@ public class TestbedPanel extends VerticalPanel {
 			public void onSuccess(Method method, List<User> response) {
 				serverResponseLabel.removeStyleName("serverResponseLabelError");
 				String names = response.stream()
-						.map(e -> "<li>" + "Username:" + e.getUserName() + ", ID: " + e.getId() + "</li>")
-						.collect(Collectors.joining(""));
+					.map(e -> "<li>" + 
+						"User name:" + e.getName() +
+						"User email:" + e.getEmail() +
+						", ID: " + e.getId() + 
+						"</li>")
+					.collect(Collectors.joining(""));
 				showDialogBox("REST endpoint call", "<ul>" + names + "<ul>");
 			}
 
 			@Override
 			public void onFailure(Method method, Throwable exception) {
 				serverResponseLabel.addStyleName("serverResponseLabelError");
-				showDialogBox("REST endpoint call - Failure", IKs.SERVER_ERROR);
-			}
-		});
-	}
-	
-	private void callSaveService() {
-		String usernmae = nameField.getText();
-		ServiceFactory.USER_SERVICE.saveUser(usernmae, new MethodCallback<User>() {
-
-			@Override
-			public void onSuccess(Method method, User response) {
-				serverResponseLabel.removeStyleName("serverResponseLabelError");
-				showDialogBox("REST endpoint call", "Username: " + response.getUserName() + " ID: " + response.getId());
-			}
-
-			@Override
-			public void onFailure(Method method, Throwable exception) {
-				serverResponseLabel.addStyleName("serverResponseLabelError");
-				showDialogBox("REST endpoint call - Failure", IKs.SERVER_ERROR);
+				showDialogBox("REST endpoint call - Failure", IConstants.SERVER_ERROR);
 			}
 		});
 	}
