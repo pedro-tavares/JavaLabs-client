@@ -52,7 +52,6 @@ public class TestbedPanel extends VerticalPanel {
 
 		loadAllButton.addClickHandler(event -> callLoadService());
 		
-		this.setStyleName("vPanel");
 		this.setSize("100", "100");
 		this.add(nameField);
 		this.add(saveButton);

@@ -81,11 +81,6 @@ button.gwt-Button[disabled] {
   	filter: alpha(opacity=75); /* For IE8 and earlier */
 }
 
-.vPanel {
-	background-color: none;
-	z-index: 1;
-}
-
 .centerImg {
 	width: 100%;
 	height: 100%;
