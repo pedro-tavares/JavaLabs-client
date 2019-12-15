@@ -9,13 +9,14 @@ import org.fusesource.restygwt.client.MethodCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.javalabs.dto.User;
-
-import com.javalabs.IKonstants;
+import com.javalabs.IKs;
 import com.javalabs.client.service.ServiceFactory;
+import com.javalabs.dto.User;
 
 public class TestbedPanel extends VerticalPanel {
 	
@@ -26,15 +27,18 @@ public class TestbedPanel extends VerticalPanel {
 	private DialogBox dialogBox;
 
 	public TestbedPanel() {
+		this.setStyleName("centerPanels");
+		this.setSpacing(10);
+		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+		this.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
+		
 		nameField = new TextBox();
 		saveButton = new Button("Save");
 
 		searchField = new TextBox();
 		searchButton = new Button("Search");
+
 		loadAllButton = new Button("Load All");
-		
-		saveButton.addStyleName("sendButton");
-		searchButton.addStyleName("sendButton");
 
 		nameField.setFocus(true);
 		nameField.selectAll();
@@ -109,7 +113,7 @@ public class TestbedPanel extends VerticalPanel {
 			@Override
 			public void onFailure(Method method, Throwable exception) {
 				serverResponseLabel.addStyleName("serverResponseLabelError");
-				showDialogBox("REST endpoint call - Failure", IKonstants.SERVER_ERROR);
+				showDialogBox("REST endpoint call - Failure", IKs.SERVER_ERROR);
 			}
 		});
 	}
@@ -127,7 +131,7 @@ public class TestbedPanel extends VerticalPanel {
 			@Override
 			public void onFailure(Method method, Throwable exception) {
 				serverResponseLabel.addStyleName("serverResponseLabelError");
-				showDialogBox("REST endpoint call - Failure", IKonstants.SERVER_ERROR);
+				showDialogBox("REST endpoint call - Failure", IKs.SERVER_ERROR);
 			}
 		});
 	}
