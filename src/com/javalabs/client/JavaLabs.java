@@ -13,6 +13,7 @@ import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -71,7 +72,11 @@ public class JavaLabs implements EntryPoint {
 		bottomPanel.setStyleName("bottomPanel");
 		bottomPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		bottomPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
-		bottomPanel.add(new Label("JavaLabs is a product by CloudLabs. Hosted in Dublin and Amsterdam"));
+		Anchor indiegogoLnk = new Anchor(
+			"JavaLabs is a product by CloudLabs. Support our Indiegogo Campaign", 
+			"https://www.indiegogo.com/projects/java-knowledge-base/x/7465742#/", "_blank"
+		);
+		bottomPanel.add(indiegogoLnk);
 		RootPanel.get().add(bottomPanel, 0, Window.getClientHeight() - 25);
 		
 		javaImg.setPixelSize(100, 100);
